@@ -1,0 +1,13 @@
+com\emailsecurity\analysis\SenderAnalyzer.class
+com\emailsecurity\parser\EmailParser.class
+com\emailsecurity\model\ThreatReport$ThreatType.class
+com\emailsecurity\analysis\MachineLearningAnalyzer.class
+com\emailsecurity\analysis\LinkAnalyzer.class
+com\emailsecurity\analysis\TextAnalyzer.class
+com\emailsecurity\util\ConfigLoader.class
+com\emailsecurity\analysis\EmailAnalyzer.class
+com\emailsecurity\analysis\EmailAnalyzer$1.class
+com\emailsecurity\model\Email.class
+com\emailsecurity\model\ThreatReport.class
+com\emailsecurity\ui\ConsoleUI.class
+com\emailsecurity\Main.class

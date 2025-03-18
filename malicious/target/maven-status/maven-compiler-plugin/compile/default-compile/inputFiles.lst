@@ -1,0 +1,11 @@
+C:\Users\karti\Documents\malicious\src\main\java\com\emailsecurity\analysis\EmailAnalyzer.java
+C:\Users\karti\Documents\malicious\src\main\java\com\emailsecurity\analysis\LinkAnalyzer.java
+C:\Users\karti\Documents\malicious\src\main\java\com\emailsecurity\analysis\MachineLearningAnalyzer.java
+C:\Users\karti\Documents\malicious\src\main\java\com\emailsecurity\analysis\SenderAnalyzer.java
+C:\Users\karti\Documents\malicious\src\main\java\com\emailsecurity\analysis\TextAnalyzer.java
+C:\Users\karti\Documents\malicious\src\main\java\com\emailsecurity\Main.java
+C:\Users\karti\Documents\malicious\src\main\java\com\emailsecurity\model\Email.java
+C:\Users\karti\Documents\malicious\src\main\java\com\emailsecurity\model\ThreatReport.java
+C:\Users\karti\Documents\malicious\src\main\java\com\emailsecurity\parser\EmailParser.java
+C:\Users\karti\Documents\malicious\src\main\java\com\emailsecurity\ui\ConsoleUI.java
+C:\Users\karti\Documents\malicious\src\main\java\com\emailsecurity\util\ConfigLoader.java

@@ -1,0 +1,25 @@
+From: security@paypa1.com
+Reply-To: admin@secure-payments.net
+Subject: URGENT: Your PayPal account needs immediate verification
+Date: Wed, 15 Jul 2023 08:32:15 -0700
+
+Dear Valued Customer,
+
+We have detected suspicious login attempts on your PayPal account. To ensure your account security, we need you to verify your information IMMEDIATELY.
+
+If you do not verify your account within 24 hours, your account will be SUSPENDED permanently.
+
+Click here to verify your account: http://paypal-secure-verification.com/login
+
+Please update your:
+- Full Name
+- Address
+- Credit Card Information
+- Social Security Number
+
+This process is mandatory for all users as part of our new security measures.
+
+Thank you for your cooperation,
+PayPal Security Team
+
+© 2023 PayPal Inc. All rights reserved. 

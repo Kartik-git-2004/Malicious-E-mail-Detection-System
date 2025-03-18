@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malicious Email Detector</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Add jsPDF library for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="logo">
+                <i class="fas fa-shield-alt"></i>
+                <h1>Email<span>Shield</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li class="active"><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#"><i class="fas fa-history"></i> History</a></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li><a href="#"><i class="fas fa-question-circle"></i> Help</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="app-main">
+            <section class="hero-section">
+                <div class="hero-content">
+                    <h2>Secure Your Inbox</h2>
+                    <p>Our advanced AI-powered system detects phishing attempts, spam, and malicious content in emails.</p>
+                </div>
+                <div class="hero-image">
+                    <img src="email.jpeg" alt="Email Security">
+                </div>
+            </section>
+
+            <section class="analysis-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-search"></i> Email Analysis</h2>
+                    <p>Paste an email or upload a file to analyze for threats</p>
+                </div>
+
+                <div class="analysis-options">
+                    <div class="option-tabs">
+                        <button class="tab-btn active" data-tab="paste">Paste Email</button>
+                        <button class="tab-btn" data-tab="upload">Upload File</button>
+                    </div>
+
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="paste-tab">
+                            <form id="paste-form">
+                                <div class="form-group">
+                                    <label for="email-subject">Subject</label>
+                                    <input type="text" id="email-subject" placeholder="Enter email subject">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email-sender">Sender</label>
+                                    <input type="text" id="email-sender" placeholder="Enter sender email address">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email-content">Email Content</label>
+                                    <textarea id="email-content" placeholder="Paste the full email content here..."></textarea>
+                                </div>
+                                <button type="submit" class="analyze-btn">
+                                    <i class="fas fa-shield-alt"></i> Analyze Email
+                                </button>
+                            </form>
+                        </div>
+                        <div class="tab-pane" id="upload-tab">
+                            <form id="upload-form">
+                                <div class="upload-area">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <p>Drag & drop email file here or</p>
+                                    <label for="file-upload" class="file-upload-btn">Choose File</label>
+                                    <input type="file" id="file-upload" hidden>
+                                    <p class="file-name">No file chosen</p>
+                                </div>
+                                <button type="submit" class="analyze-btn">
+                                    <i class="fas fa-shield-alt"></i> Analyze File
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="results-section hidden" id="results-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-chart-pie"></i> Analysis Results</h2>
+                </div>
+                <div class="results-container">
+                    <div class="threat-score">
+                        <div class="score-circle">
+                            <svg viewBox="0 0 36 36" class="circular-chart">
+                                <path class="circle-bg" d="M18 2.0845
+                                    a 15.9155 15.9155 0 0 1 0 31.831
+                                    a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                <path class="circle" stroke-dasharray="75, 100" d="M18 2.0845
+                                    a 15.9155 15.9155 0 0 1 0 31.831
+                                    a 15.9155 15.9155 0 0 1 0 -31.831"/>
+                                <text x="18" y="20.35" class="percentage">75%</text>
+                            </svg>
+                            <div class="score-label">Threat Score</div>
+                        </div>
+                    </div>
+                    <div class="threat-details">
+                        <div class="threat-summary">
+                            <h3>Email Analysis Summary</h3>
+                            <p class="verdict high">
+                                <i class="fas fa-exclamation-triangle"></i> 
+                                High Risk: This email contains multiple signs of phishing
+                            </p>
+                        </div>
+                        <div class="threat-categories">
+                            <div class="category-item">
+                                <div class="category-header">
+                                    <h4>Phishing</h4>
+                                    <div class="indicator high"></div>
+                                </div>
+                                <p>Multiple urgent requests and suspicious links detected</p>
+                            </div>
+                            <div class="category-item">
+                                <div class="category-header">
+                                    <h4>Spam</h4>
+                                    <div class="indicator medium"></div>
+                                </div>
+                                <p>Contains promotional language but not overly aggressive</p>
+                            </div>
+                            <div class="category-item">
+                                <div class="category-header">
+                                    <h4>Malicious URLs</h4>
+                                    <div class="indicator high"></div>
+                                </div>
+                                <p>Contains 2 URLs that point to known malicious domains</p>
+                            </div>
+                            <div class="category-item">
+                                <div class="category-header">
+                                    <h4>Sender Reputation</h4>
+                                    <div class="indicator low"></div>
+                                </div>
+                                <p>Sender domain is properly configured with SPF/DKIM</p>
+                            </div>
+                        </div>
+                        <div class="detected-elements">
+                            <h3>Detected Elements</h3>
+                            <ul class="elements-list">
+                                <li>
+                                    <i class="fas fa-link"></i>
+                                    <span class="element-text">http://malicious-site.com/login</span>
+                                    <span class="element-tag">Malicious URL</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-exclamation-circle"></i>
+                                    <span class="element-text">urgent password verification</span>
+                                    <span class="element-tag">Phishing Keyword</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-envelope"></i>
+                                    <span class="element-text">support@suspicious-bank.com</span>
+                                    <span class="element-tag">Suspicious Sender</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="action-buttons">
+                    <button class="action-btn report">
+                        <i class="fas fa-flag"></i> Report as Malicious
+                    </button>
+                    <button class="action-btn safe">
+                        <i class="fas fa-check-circle"></i> Mark as Safe
+                    </button>
+                    <button class="action-btn pdf-export">
+                        <i class="fas fa-file-pdf"></i> Export as PDF
+                    </button>
+                    <button class="action-btn new-analysis">
+                        <i class="fas fa-redo"></i> New Analysis
+                    </button>
+                </div>
+            </section>
+
+            <section class="features-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-star"></i> Key Features</h2>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>AI-Powered Analysis</h3>
+                        <p>Advanced machine learning algorithms detect even the most sophisticated phishing attempts</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-link"></i>
+                        </div>
+                        <h3>URL Analysis</h3>
+                        <p>Automatically checks all links against databases of known malicious URLs</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h3>Content Analysis</h3>
+                        <p>Scans email content for suspicious keywords and social engineering tactics</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+                        <h3>Sender Verification</h3>
+                        <p>Validates sender information and checks against known malicious senders</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="app-footer">
+            <p>&copy; 2023 EmailShield - Malicious Email Detection System</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Us</a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="bridge.js"></script>
+    <script src="pdf-export.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 

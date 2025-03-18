@@ -1,0 +1,8 @@
+{
+  "thresholds": {
+    "spam_threshold": 70,
+    "phishing_threshold": 60,
+    "link_threshold": 50
+  },
+  "ml_model_path": "models/email_classifier.model"
+}
